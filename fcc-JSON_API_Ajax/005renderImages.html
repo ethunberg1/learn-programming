@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>5. Render Images from Data Sources</title>
+</head>
+<body>
+
+<!-- We've seen from the last two lessons that each object in our JSON array contains an imageLink key with a value that is the URL of a cat's image.
+
+When we're looping through these objects, let's use this imageLink property to display this image in an img element.
+
+Here's the code that does this:
+
+html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>"; -->
+
+
+<script>
+  $(document).ready(function() {
+
+    $("#getMessage").on("click", function() {
+      $.getJSON("/json/cats.json", function(json) {
+
+        var html = "";
+
+        json.forEach(function(val) {
+
+          html += "<div class = 'cat'>";
+
+          // Only change code below this line.
+          html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>";
+          
+          
+          // Only change code above this line.
+
+          html += "</div>";
+
+        });
+
+        $(".message").html(html);
+
+      });
+    });
+  });
+</script>
+
+<div class="container-fluid">
+  <div class = "row text-center">
+    <h2>Cat Photo Finder</h2>
+  </div>
+  <div class = "row text-center">
+    <div class = "col-xs-12 well message">
+      The message will go here
+    </div>
+  </div>
+  <div class = "row text-center">
+    <div class = "col-xs-12">
+      <button id = "getMessage" class = "btn btn-primary">
+        Get Message
+      </button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
