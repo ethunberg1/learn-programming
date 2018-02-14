@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CatPhotoApp</title>
+	</head>
+
+<body>
+	<link rel="stylesheet" href="C:\Users\erik.thunberg\Documents\FreeCodeCamp\fcc-bootstrap\bootstrap-catphoto_app.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/> <!-- Adds Font Awesome library -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/> <!-- Bootstrap 3 library -->
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css"> <!-- Google fonts-->
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-8">
+				<h2 class="text-primary text-center">CatPhotoApp</h2> <!-- set h2 class to "text-center" to center justify relative to screen width using bootstrap; 
+																											Added text-primary to use Bootstraps styling
+																											Added custom heading by nexting this element in the bootstrap grid.-->
+			</div>	
+			<div class="col-xs-4">
+				<a href="#"><img class="img-responsive thick-green-border" src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back. "></a> <!--added img-responsive to top image 
+																																																				Added bootstrap grid to create heading with thumbnail -->
+			</div>
+		</div>
+		
+		
+		<img class="img-responsive" src="https://bit.ly/fcc-running-cats" alt="Three cats running towards the camera.">  <!-- giving the img attribute the class "img-responsive" displays the image according to screen dimensions -->
+		
+		
+		<!-- Buttons!!!!!!! -->
+		<div class="row"> <!-- Nest all of the buttons into a div and give it class="row" in order to snap them to Bootstrap grid -->
+			<div class="col-xs-4"> <!-- each element takes up 4 columns size Xtra Small (use Xtra Small for mobile handsets-->
+				<button class="btn btn-block btn-primary"><i class="fa fa-thumbs-up">like</i></button> <!-- assign the class "btn" to a button element to style against bootstrap; add another class "btn-block" to 
+																																								to make the button fill up 100% of the available width; You can add the class "btn-primary" to give the button the main 
+																																								color treatement you'll use in your app. It's useful for highlighting actions you want your user to take. 
+																																								Added Font Awesome "thumbs up" icon -->
+																																								
+			</div>
+			
+			<div class="col-xs-4">
+				<button class="btn btn-block btn-info"> <!-- "btn-info" is great for calling out optional features/tasks for the user --->
+					<i class="fa fa-info-circle">Info</i> <!-- Use 'Font Awesome' icon libray -->
+				</button> 
+			</div>
+			
+			<div class="col-xs-4">
+				<button class="btn btn-block btn-danger"> <!-- Use "btn-danger" bootstrap class to warn users of dangerous actions like deleting stuff -->
+					<i class="fa fa-trash">Delete</i> <!-- Use 'Font Awesome' icon libray -->
+				</button> 
+			</div>
+		</div>
+		
+		<!-- Lists!!!!!!!! -->
+		<p>Things cats love:</p>
+			<ul>
+				<li>cat nip</li>
+				<li>laser pointers</li>
+				<li>lasagna</li>
+			</ul>
+		<p>Top 3 things cats hate:</p>
+			  <ol>
+				<li>flea treatment</li>
+				<li>thunder</li>
+				<li>other cats</li>
+			  </ol>
+	  
+	  <!-- Forms!!! -->
+		<div class="row">
+			<form action="/submit-cat-photo">
+				<!-- Radio Buttons -->
+				<div Class="col-xs-6"> <!-- Use Bootstrap grid to apply responsive design to inputs-->
+					<label><input type="radio" name="indoor-outdoor"> Indoor</label>
+					</div>
+					
+				<div class="col-xs-6">
+					<label><input type="radio" name="indoor-outdoor"> Outdoor</label>
+					</div>
+				
+				<!-- Checkbox Buttons-->
+				<div class="row">
+					<div class="col-xs-4">
+						<label><input type="checkbox" name="personality"> Loving</label>
+						</div>
+					<div class="col-xs-4">
+						<label><input type="checkbox" name="personality"> Lazy</label>
+						</div>
+					<div class="col-xs-4">
+						<label><input type="checkbox" name="personality"> Crazy</label>
+						</div>
+					
+					<!--Form Submission -->
+				<div class="row"> <!-- line up form elements responsively-->
+					<div class="col-xs-7">
+						<input type="text" placeholder="cat photo URL" required>
+						</div>
+					<div class="col-xs-5">
+						<button type="submit" class="btn btn-primary" >
+							<i class="fa fa-paper-plane">Submit</i>
+						</button>
+						</div>
+					</div>
+			</form>
+		</div>
+		
+		</body>
+	</html>
