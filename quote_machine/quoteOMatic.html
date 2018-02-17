@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>QUOTE-O-MATIC</title>
+</head>
+
+<body>
+  <h1 class="text-center jumbotron section_heading" id="page_title">QUOTE-O-MATIC</h1>
+  
+  <div class="container-fluid">
+    <div class="col-md-6 offset-md-2" id="quote_box">
+      <p class="quote_content"></p>
+      <br></br>
+      <button type="submit" class="btn" id="getQuote">Get a Quote</button>
+    </div>
+    <br></br>
+    <div class="col-md-6 offset-md-2" id="someOtherDiv">
+      <h6>Powered by <a href ="https://quotesondesign.com/api-v4-0/">Quotes on Design API v4.0<a></h6>
+    </div>
+  </div>
+
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+	$(document).ready(function() {
+		$("#getQuote").on("click",function() {
+			$.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand &filter[posts_per_page]=1&callback=", function(a) {
+				$(".quote_content").append(a[0].content + "<p>&mdash; " + a[0].title + "</p>")});  
+		});
+	]);
+	<script>
+
+</body>
+</html>
