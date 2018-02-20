@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SwansonQuotes</title>
+</head>
+<style>
+	body {
+	  background:#263238;
+	}
+
+	.section_heading {
+	  color:#ECEFF1;
+	}
+
+	#quote_box {
+	  color:white;
+	  padding:20px
+	}
+	button {
+	  color:black;
+	  padding:20px;
+	}
+	#footer {
+	  color:#ECEFF1;
+	}
+</style>
+<body class="main">
+
+  <div class="container-fluid">
+    <div class="col-md-8 offset-md-1">
+      <h1 class="text-left section_heading" id="page_title">Ron Swanson Quotes</h1>
+      <h4 class="text-left section_heading" id="tag-line">Little nuggets of wisdom from a simple American hero.</h4>
+    </div>
+  
+    <div class="col-md-6 offset-md-2" id="quote_box">
+      
+      <span id="quote_content"></span>
+     
+      <p id="author">- Ron Swanson</p>
+      <button type="submit" class="btn btn" id="getQuote" alt="'murica">Get a Quote</button>
+      <button type="submit" class="btn btn" id="tweet" alt="What the hell is Twitter anyway?">
+          <i class="fa fa-twitter">Tweet 
+          </i>
+         </a>
+      </button>
+    </div>
+    
+    <br></br>
+  
+    <div class="col-md-6 offset-md-2" id="footer">
+      <h6>Shamelessly stolen from <a href ="https://github.com/jamesseanwright/ron-swanson-quotes" target="_blank">GitHub jamesseanwright</a></h6>
+      <h6>By <a href="https://github.com/ethunberg1" target="_blank">ethunberg1</a>.</h6>
+    </div>
+  </div>
+      
+</body>
+
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+	$(document).ready(function() {
+
+//Ron Swanson quote API https://github.com/jamesseanwright/ron-swanson-quotes
+
+var quoteButton = document.body.querySelector('#getQuote');
+var quoteOutput = document.body.querySelector('#quote_content');
+
+function* quoteGenerator() {
+	while (true) {
+		yield fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+    		.then(res => res.json());
+ 	}
+}
+
+var generator = quoteGenerator();
+
+function updateQuote() {
+	quoteButton.disabled = true;
+
+	generator.next().value.then(function (data) {
+		quoteOutput.innerHTML = `"${data[0]}"`;
+		quoteButton.disabled = false;
+	});
+}
+
+quoteButton.onclick = updateQuote;
+
+updateQuote();
+
+// the goddam twitter button:
+  $('#tweet').on("click",function(){
+    window.open("https://twitter.com/intent/tweet?text=" + quoteOutput.innerHTML + "- Ron Swanson");
+  });
+
+ 
+    
+});
+	<script>
+
+</html>
