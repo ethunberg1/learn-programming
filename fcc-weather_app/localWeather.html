@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>FCC Local Weather</title>
+</head>
+<body>
+	<div class="conatainer-fluid main">
+	  <h1 id="location_name" class="weathere_data"></h1>
+	  <h2 id="location_country"class="weathere_data"></h2>
+  
+	  <li class = "list-unstyled Weather_info">
+		<ul id="temperature_label">Temp: <span id="temperature_data" class="weathere_data"></span></ul>
+			<ul id="temperature_button"><button type="submit" class="btn">&#8457; / &#8451;</button></ul>
+		<ul id="weather_main" class="weather_data"></ul>
+		<ul id="weather_description"></ul>
+	  </li>
+	</div>
+
+	<!-- My Footer -->
+	<footer class="footer">
+	  <div class="container-fluid">
+		<span class="text-muted">By Erik Thunberg
+		  <a href="https://codepen.io/ethunberg1/#" target="_blank"><i id="codepen_thumb" class="fa fa-codepen ethunb"> Codepen</i></a>
+		  <a href="https://github.com/ethunberg1" target="_blank"><i id="github_thumb" class="fa fa-github ethunb"> Github</i></a>
+		</span>
+	  </div>
+	</footer>
+</body>
+
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script>
+	$(document).ready(function() {
+	  var long, lat, tempFar, tempCels;
+	  var tempSwap = true;
+	
+	  // Get Location data for your Weather API call
+	  if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+      
+		  long = position.coords.longitude
+		  lat = position.coords.latitude
+      
+		  // Nav test data
+		  /* Chicago position
+		  long = -87.656540;
+		  lat = 41.867166;
+		  */
+		  $("#data").html("latitude: " + lat + "<br>longitude: " + long);
+      
+	  // Set up your weather api call
+	  var api = 'https://fcc-weather-api.glitch.me/api/current?lon='+long+'&lat='+lat;
+  
+	  $.getJSON(api, function(data) {
+		console.log(data);
+		$("#location_name").html(data.name + " Local Weather");
+		$("#location_country").html(data.sys.country);
+		$("#weather_main").html(data.weather[0].main);
+		$("#weather_description").html(data.weather[0].description);
+    
+		//tempCels = (10).toFixed(1);
+		tempCels = (data.main.temp).toFixed(1); // Celscius char code: &#8451
+		tempFar = (tempCels * (9/5) + 32).toFixed(1); // Farhenheit char code: &#8457
+    
+		$("#temperature_data").html(tempFar + " &#8457;");
+    
+		$("#temperature_button").click(function() {	//This sets up a click event on the temperature text itself 
+			 
+		  if (tempSwap === false) {
+			$("#temperature_data").html(tempFar + " &#8457;")
+			tempSwap = true
+		  } else {
+			$("#temperature_data").html(tempCels + " &#8451;")
+			tempSwap = false
+		  } 
+		});
+    
+		
+		// change the background depending on the weather main and temp datata
+		if (tempCels > 20) { // for when it super hot
+			$('body').css('background-image', 'url(https://i.imgur.com/uJ3K9Va.jpg)')
+			} else if (tempCels > 12) { // for when it's pretty nice day out
+			  $('body').css('background-image', 'url(https://i.imgur.com/8chQ5YX.jpg)')
+			} else if (tempCels < 11) { // for when it's real cold
+				$('body').css('background-image', 'url(https://i.imgur.com/DgsBaTO.jpg)')
+				$('body').css('color', 'white')
+		}
+          
+	  });    
+    
+	  });     
+	  };
+	});
+	</script>
+
+
+</html>

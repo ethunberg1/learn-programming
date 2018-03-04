@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<style>
+	body {
+	  padding: 20px;
+	}
+	.jumbotron {
+	  background-color:white;
+	  padding: 20px;
+	}
+	li {
+	  padding: 10px;
+	}
+	.footer {
+	  position: absolute;
+	  bottom: 0;
+	  width: 100%;
+	  /* Set the fixed height of the footer here */
+	  height: 60px;
+	  line-height: 60px; /* Vertically center the text there */
+	  background-color: white;
+	}
+</style>
+
+<body>
+	<div class="container-fluid jumbotron top_search">
+	  <h1 class="text-center" id="mainTitle">Wikipedia Viewer</h1>
+	  <h4 class="text-center" id="mainSubtitle">Free Code Camp Wikipedia API exercise</h4>
+	  <div class="row">
+		<div class="col-md-8 offset-md-2">
+		  <div class="input-group">
+			<span class="input-group-btn">
+			  <button class="btn btn-primary fa fa-search" id="searchButton" type="button">
+			  </button>
+			</span>
+			<input type="text" class="form-control" id="searchTerm" placeholder="Search for...">
+			<span class="input-group-btn">
+		  <a class="btn btn-info" id="randomButton" href="https://en.wikipedia.org/wiki/Special:Random" target="blank_" role="button">Random</a>
+		</span>
+		  </div>
+		</div> 
+	  </div>
+	</div>
+
+	<div class="container-fluid" id="wikiResults">
+	  <ul class="list-unstyled" id = "output">
+
+	  </ul>
+	</div>
+
+	<!-- My Footer -->
+	<footer class="footer">
+	  <div class="container-fluid">
+		<span class="text-muted">By Erik Thunberg
+		  <a href="https://codepen.io/ethunberg1/#" target="_blank"><i id="codepen_thumb" class="fa fa-codepen ethunb"> Codepen</i></a>
+		  <a href="https://github.com/ethunberg1" target="_blank"><i id="github_thumb" class="fa fa-github ethunb"> Github</i></a>
+		</span>
+	  </div>
+	</footer>
+</body>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/esm/popper.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+  
+	  $('#searchButton').click(function() {
+		var searchTerm = $('#searchTerm').val();
+		var wikiApi = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchTerm + "&format=json&callback=?";
+   
+		$.ajax({
+		  type:"GET",
+		  url:wikiApi,
+		  async:false,
+		  dataType: "json",
+		  success: function(data){
+			// console.log(data[1][0]); //search term result heading array index
+			// console.log(data[2][0]); //result description array index
+			// console.log(data[3][0]); //result URL array index 
+			$('#output').html(' ');
+			for (var i = 0; i < data[1].length; i ++) {
+			  $('#output').prepend("<li><a href= "+data[3][i]+">"+data[1][i]+"</a><p>"+data[2][i]+"</p></li>");
+			}
+		  },
+		  error: function(errorMessage){
+			alert("Error");
+		  }
+      
+		});
+  
+		$(".footer").css("position","relative");
+    
+	  });
+	});
+</script>
+
+</html>
