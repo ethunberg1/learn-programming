@@ -9,6 +9,15 @@
 <style>
 	body {
 		padding:20px;
+}
+	.jumbotron{
+		background-color: #4b367c;
+		position: relative;
+		color: rgb(210, 201, 232);
+	}
+	#twitchLogo{
+		width:200px;
+		height:auto;
 	}
 	#loader {
 		width:60px;
@@ -18,9 +27,13 @@
 	.userListGroup {
 		position: center;
 	}
+	.userLogo{
+		width:100px;
+		height: auto;
+	}
 	.footer {
 	  position: absolute;
-	  bottom: 0;
+	  bottom: 10;
 	  width: 100%;
 	  /* Set the fixed height of the footer here */
 	  height: 40px;
@@ -31,8 +44,9 @@
 
 <body>
 	<div class ="container-fluid jumbotron" id="header">
-		<h1 class="text-center" id="titleText">Twitch.TV Streamers</hi>
+		<h1 class="text-center" id="titleText"><a href ="https://www.twitch.tv/" target="blank_"><img src=http://twitchadvertising.tv/wp-content/uploads/2014/03/logo_white_twitch_effects.png id="twitchLogo"></a> Streamers</hi>
 		<h3 class="text-center" id="subtitleText">See who's online and streaming your favorite content</h3>
+		<h6 class="text-center" id="secondSubText">(As long as the user is in my array)</h6>
 		<a href = "https://www.twitch.tv/freecodecamp" target = "blank_">
 		<h3 class="text-center" id="fccStatus"></h3></a>
 	</div>
@@ -66,9 +80,10 @@
 			<h1>Status:<h1>
 		</div>
 	</div>
-	<div id="userInfo">
+	<div id="userList">
 	
 	</div>
+
 	<!-- Loading gif if I can get this stupid thing to work
 	<span class="text-center">
 		<img src = "https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif" alt ="" id="loader" />
@@ -111,33 +126,22 @@
 		});
 	
 		//Display status for each user in the users array
-		for (var i=0; i<users.length; i++) {
-			var url2= 'https://wind-bow.gomix.me/twitch-api/streams/'+users[i]+'/?callback=?';
-
-				$.getJSON(url2).done(function(data2) {
-					var logo;
-					var status;
-					var name;
-					//console.log(url2);
-					//write out your conditions if there is an error in the API response
-					if(data2.error) {
-						logo = "http://insight.venturebeat.com/sites/all/modules/features/vb_intel_analysts/assets/images/analyst-placeholder-avatar.png";
-						name = data2.message;
-						status = data2.error;
-						//console.log(data2.error);
-						$("#userList").prepend("<div class='row'>" + "<div class='col-md-4'>"+"<img src ='" + logo + "'>"+"</div>" + "<div class='col-md-4'>"+name+"</div>" + "<div class='col-md-4'>"+status+"</div></div>");
-					}
-				});
-				}
 		for(var i=0; i<users.length; i++) {
 			var onlineURL = "https://wind-bow.gomix.me/twitch-api/streams/"+users[i]+"/?callback=?";
-				$.getJSON(onlineURL, function(data3){
-					
-					var logo = data3.stream.channel.logo;
-					var status = data3.stream.channel.status;
-					var name = data3.stream.channel.display_name;
-					//console.log(name);
-					$("#userList").prepend("<div class='row'>" + "<div class='col-md-4'>"+"<img src ='" + logo + "'>"+"</div>" + "<div class='col-md-4'>"+name+"</div>" + "<div class='col-md-4'>"+status+"</div></div>");
+				$.getJSON(onlineURL, function(data2){
+					if(data2.stream != null){
+						var logo = data2.stream.channel.logo;
+						var name = data2.stream.channel.display_name;
+						var status = data2.stream.channel.status;
+						//console.log(name);
+						$("#userList").prepend("<div class='row'>" + "<div class='col-md-4'>"+"<img src ='" + logo + "'class='userLogo'>"+"</div>" + "<div class='col-md-4'>"+name+"</div>" + "<div class='col-md-4'>"+status+"</div></div>");
+				} else if(data2.stream ===null) {
+						var logo = "https://www.sxsunlimited.com/wp-content/uploads/2017/02/st4Sp6Aw.jpg";
+						var name = data2.stream.channel.display_name;
+						var status = data2.stream.channel.status;
+						console.log(data2.stream);
+						$("#userList").prepend("<div class='row'>" + "<div class='col-md-4'>"+"<img src ='" + logo + "'class='userLogo'>"+"</div>" + "<div class='col-md-4'>"+name+"</div>" + "<div class='col-md-4'>"+status+"</div></div>");
+				}
 				});
 		};
 	}); 
