@@ -7,103 +7,98 @@
 </head>
 
 <style>
-    body {
-        padding: 20px;
-    }
-
-    .jumbotron {
-        background-color: #4b367c;
-        position: relative;
-        color: rgb(210, 201, 232);
-    }
-
-    #twitchLogo {
-        width: 200px;
-        height: auto;
-    }
-
-    .tableHeader {
-        background-color: #4b367c;
-    }
-
-    .userListGroup {
-        position: center;
-    }
-
-    .userLogo {
-        width: 100px;
-        height: auto;
-        border-radius: 25%;
-        padding: 10px
-    }
-
-    .footer {
-        position: absolute;
-        bottom: 10;
-        width: 100%;
-        /* Set the fixed height of the footer here */
-        height: 40px;
-        line-height: 40px; /* Vertically center the text there */
-        background-color: white;
-    }
+	body {
+		padding:20px;
+}
+	.jumbotron{
+		background-color: #4b367c;
+		position: relative;
+		color: rgb(210, 201, 232);
+	}
+	#twitchLogo{
+		width:200px;
+		height:auto;
+	}
+	#loader {
+		width:60px;
+		height: auto;
+		position: center;
+	}
+	.userListGroup {
+		position: center;
+	}
+	.userLogo{
+		width:100px;
+		height: auto;
+	}
+	.footer {
+	  position: absolute;
+	  bottom: 10;
+	  width: 100%;
+	  /* Set the fixed height of the footer here */
+	  height: 40px;
+	  line-height: 40px; /* Vertically center the text there */
+	  background-color: white;
+	}
 </style>
 
 <body>
-    <div class="container-fluid jumbotron" id="header">
-        <h1 class="text-center" id="titleText">
-            <a href="https://www.twitch.tv/" target="blank_"><img src=http://twitchadvertising.tv/wp-content/uploads/2014/03/logo_white_twitch_effects.png id="twitchLogo"></a> Streamers</hi>
-            <h3 class="text-center" id="subtitleText">See who's online and streaming your favorite content</h3>
-            <h6 class="text-center" id="secondSubText">(As long as the user is in my array)</h6>
-            <a href="https://www.twitch.tv/freecodecamp" target="blank_">
-                <h3 class="text-center" id="fccStatus"></h3>
-            </a>
-    </div>
+	<div class ="container-fluid jumbotron" id="header">
+		<h1 class="text-center" id="titleText"><a href ="https://www.twitch.tv/" target="blank_"><img src=http://twitchadvertising.tv/wp-content/uploads/2014/03/logo_white_twitch_effects.png id="twitchLogo"></a> Streamers</hi>
+		<h3 class="text-center" id="subtitleText">See who's online and streaming your favorite content</h3>
+		<h6 class="text-center" id="secondSubText">(As long as the user is in my array)</h6>
+		<a href = "https://www.twitch.tv/freecodecamp" target = "blank_">
+		<h3 class="text-center" id="fccStatus"></h3></a>
+	</div>
 
 
-    <!--Twitch user filter selectors
-    <div class="container-fluid text-center" id="filterSelectorGroup">
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary active">
-                <input type="radio" name="options" id="allSelector" autocomplete="off" checked> All
-            </label>
-            <label class="btn btn-primary">
-                <input type="radio" name="options" id="onlineSelector" autocomplete="off"> Online
-            </label>
-            <label class="btn btn-primary">
-                <input type="radio" name="options" id="offlineSelector" autocomplete="off"> Offline
-            </label>
-        </div>
-    </div>
-    -->
-    <!-- Twitch User List -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <table class="table">
-                    <thead class="thead-dark tableHeader">
-                        <tr>
-                            <th scope="col">Logo</th>
-                            <th scope="col">Display Name</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    <tbody id="userList"></tbody>
-                </table>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    </div>
+	<!--Twitch user filter selectors
+	<div class="container-fluid text-center" id="filterSelectorGroup">
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-primary active">
+				<input type="radio" name="options" id="allSelector" autocomplete="off" checked> All
+			</label>
+			<label class="btn btn-primary">
+				<input type="radio" name="options" id="onlineSelector" autocomplete="off"> Online
+			</label>
+			<label class="btn btn-primary">
+				<input type="radio" name="options" id="offlineSelector" autocomplete="off"> Offline
+			</label>
+		</div>
+	</div>
+	-->
 
-    <!-- My Footer -->
-    <footer class="footer">
-        <div class="container-fluid">
-            <span class="text-muted">
-                By Erik Thunberg
-                <a href="https://codepen.io/ethunberg1/#" target="_blank"><i id="codepen_thumb" class="fa fa-codepen ethunb"> Codepen</i></a>
-                <a href="https://github.com/ethunberg1" target="_blank"><i id="github_thumb" class="fa fa-github ethunb"> Github</i></a>
-            </span>
-        </div>
-    </footer>
+	<!-- Twitch User List -->
+	<div class="row">
+		<div class="col-sm-4">
+			<h1>Logo:</h1>
+		</div>
+		<div class="col-sm-4">
+			<h1>Display Name:</h1>
+		</div>
+		<div class="col-sm-4">
+			<h1>Status:<h1>
+		</div>
+	</div>
+	<div id="userList">
+	
+	</div>
+
+	<!-- Loading gif if I can get this stupid thing to work
+	<span class="text-center">
+		<img src = "https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif" alt ="" id="loader" />
+			</span>
+			-->
+		
+	<!-- My Footer -->
+	<footer class="footer">
+	  <div class="container-fluid">
+		<span class="text-muted">By Erik Thunberg
+		  <a href="https://codepen.io/ethunberg1/#" target="_blank"><i id="codepen_thumb" class="fa fa-codepen ethunb"> Codepen</i></a>
+		  <a href="https://github.com/ethunberg1" target="_blank"><i id="github_thumb" class="fa fa-github ethunb"> Github</i></a>
+		</span>
+	  </div>
+	</footer>
 </body>
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -117,52 +112,39 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
-        var offlineUsers = [];
-        var onelineUsers = [];
-
-        //Display status of FreeCode Camp user (whether online or offline)
-        var url = 'https://wind-bow.gomix.me/twitch-api/streams/freecodecamp?callback=?';
-        $.getJSON(url, function (data1) {
-            if (data1.stream === null) {
-                $('#fccStatus').html("Free Code Camp is Currenty OFFLINE!")
-            } else {
-                $('#fccStatus').html("Free Code Camp is Currenty ONLINE!")
-            }
-        });
-
-        //Display status for each user in the users array
-        for (var i = 0; i < users.length; i++) {
-            var channelsUrl = "https://wind-bow.gomix.me/twitch-api/channels/" + users[i] + "/?callback=?";
-            $.getJSON(channelsUrl).done(function (data2) {
-                if (data2.error === "Not Found") {
-                    var unknownLogo = "https://www.sxsunlimited.com/wp-content/uploads/2017/02/st4Sp6Aw.jpg";
-                    var unknownName = "User Not Found";
-                    var unknownStatus = "Lost in the nether...";
-                    var unknownUserUrl = "https://www.twitch.tv/"
-                    console.log("error check");
-                    $("#userList").append(
-                        "<tr>" +
-                        "<th scope='row'>" + "<a href ='" + unknownUserUrl + "' target='blank_'>" + "<img src ='" + unknownLogo + "'class='userLogo'>" + "</th>" +
-                        "<td class='userName'>" + unknownName + "</td>" +
-                        "<td class='userStatus'>" + unknownStatus + "</td></tr>");
-                } else {
-                    var logo = data2.logo;
-                    var name = data2.display_name;
-                    var status = data2.status;
-                    var userUrl = data2.url;
-                    //console.log("rendering users");
-                    $("#userList").prepend(
-                        "<tr>" +
-                        "<th scope='row'>" + "<a href ='" + userUrl + "' target='blank_'>" + "<img src ='" + logo + "'class='userLogo'>" + "</th>" +
-                        "<td class='userName'>" + name + "</td>" +
-                        "<td class='userStatus'>" + status + "</td></tr>");
-                }
-            });
-        }
-        //console.log(onelineUsers);
-    });
+	$(document).ready(function(){
+	var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "competelyfictionaltestuser"];		
+	
+		//Display status of FreeCode Camp user (whether online or offline)
+		var url = 'https://wind-bow.gomix.me/twitch-api/streams/freecodecamp?callback=?';
+		$.getJSON(url, function(data1) {
+  			if(data1.stream === null) {
+					$('#fccStatus').html("Free Code Camp is Currenty OFFLINE!")
+				} else {
+					$('#fccStatus').html("Free Code Camp is Currenty ONLINE!")
+			}
+		});
+	
+		//Display status for each user in the users array
+		for(var i=0; i<users.length; i++) {
+			var onlineURL = "https://wind-bow.gomix.me/twitch-api/streams/"+users[i]+"/?callback=?";
+				$.getJSON(onlineURL, function(data2){
+					if(data2.stream != null){
+						var logo = data2.stream.channel.logo;
+						var name = data2.stream.channel.display_name;
+						var status = data2.stream.channel.status;
+						//console.log(name);
+						$("#userList").prepend("<div class='row'>" + "<div class='col-md-4'>"+"<img src ='" + logo + "'class='userLogo'>"+"</div>" + "<div class='col-md-4'>"+name+"</div>" + "<div class='col-md-4'>"+status+"</div></div>");
+				} else if(data2.stream ===null) {
+						var logo = "https://www.sxsunlimited.com/wp-content/uploads/2017/02/st4Sp6Aw.jpg";
+						var name = data2.stream.channel.display_name;
+						var status = data2.stream.channel.status;
+						console.log(data2.stream);
+						$("#userList").prepend("<div class='row'>" + "<div class='col-md-4'>"+"<img src ='" + logo + "'class='userLogo'>"+"</div>" + "<div class='col-md-4'>"+name+"</div>" + "<div class='col-md-4'>"+status+"</div></div>");
+				}
+				});
+		};
+	}); 
 </script>
 
 </html>
