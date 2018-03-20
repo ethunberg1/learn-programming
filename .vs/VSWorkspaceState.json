@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\fcc-intermediate_algorithm_scripting"
+    "\\fcc-intermediate_algorithm_scripting",
+    "\\fcc-twitchTV_app"
   ],
-  "SelectedNode": "\\fcc-intermediate_algorithm_scripting",
+  "SelectedNode": "\\fcc-twitchTV_app\\twitchViewer.html",
   "PreviewInSolutionExplorer": false
 }
