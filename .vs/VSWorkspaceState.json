@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\fcc-basic_algorithm_scripting",
+    "\\fcc-basic_javascript",
+    "\\fcc-intermediate_algorithm-scripting",
+    "\\fcc-oof_programming",
     "\\fcc-twitchTV_app"
   ],
-  "SelectedNode": "\\fcc-twitchTV_app\\twitchViewer.html",
+  "SelectedNode": "\\fcc-basic_algorithm_scripting\\002factorializeNumber.js",
   "PreviewInSolutionExplorer": false
 }
