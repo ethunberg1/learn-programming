@@ -1,0 +1,40 @@
+Thank you for purchasing a MarkdownPad 2 Pro Single User license. Your license information is included below. Please keep this email for your records.
+
+Licensed to:
+
+erik@ifactorconsulting.com
+
+License Key:
+
+FZLgkaRIMZlCITtq4DSAgg6zu8UY56CASqxYcht5Uunw8RDew9
+6x0rYMFMAc4AMnWuKToI3K+Ob8pD6bzCFhnd4CXSMajbX1tzMV
+Y1iJNW4AhywOxBIF6fhFGmyBsXStl8Cu7pZXTNjAWmob5j0fsm
+QeifdeaRWVgKHqdKBZeFIOwUHijCAMtibWXsJBSqzK4sv3oLwA
+vP5ihOy0JKYQdEJhudfS0xcVEkX319e6OcHzNjyjczIuGB2112
+deNxyRKiN65gpC07/1qIPMAeJEfLGaeb3cYMMWcXPGwNsJNq6L
+X0UjU2b6led+FnCpQT1N6z+Gjw2GyXQ1hMTJqwim6A==
+
+
+To unlock MarkdownPad Pro:
+
+1. If haven't already done so, download and install MarkdownPad from http://markdownpad.com
+2. Open MarkdownPad
+3. Click the 'Help' menu and select 'Upgrade to MarkdownPad Pro'
+4. Click the 'Enter Key' button
+5. Enter the email address you used to purchase the license, shown above after 'Licensed to:'
+6. Copy your license key from this email into the appropriate field
+7. Click OK. MarkdownPad Pro will now be unlocked!
+
+If you have any questions or problems, please contact sales@markdownpad.com.
+
+Thank you for your support!
+
+-------------------------
+PAYMENT RECEIPT
+
+Item:   1x      MarkdownPad 2 Pro Single User License
+Price:  $14.95 (USD)
+Purchased by:   Erik Thunberg (erik@ifactorconsulting.com)
+Payment Method: stripe
+Order date:     2014-12-16T23:27:27+00:00
+-------------------------
